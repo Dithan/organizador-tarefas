@@ -4,6 +4,8 @@ import 'package:primeiro_projeto/components/task.dart';
 class TaskInherited extends InheritedWidget {
   TaskInherited({super.key, required this.child}) : super(child: child);
 
+  @override
+  // ignore: overridden_fields
   final Widget child;
 
   final List<Task> taskList = [
