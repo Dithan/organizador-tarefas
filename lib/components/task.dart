@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:primeiro_projeto/components/difficulty.dart';
+import 'package:primeiro_projeto/data/task_dao.dart';
 
 // ignore: must_be_immutable
 class Task extends StatefulWidget {
@@ -111,6 +112,9 @@ class _TaskState extends State<Task> {
                               padding: EdgeInsets.symmetric(
                                   horizontal: 5, vertical: 5),
                             ),
+                            onLongPress: () {
+                              TaskDao().delete(widget.nome);
+                            },
                             onPressed: () {
                               setState(() {
                                 widget.nivel++;
