@@ -113,7 +113,28 @@ class _TaskState extends State<Task> {
                                   horizontal: 5, vertical: 5),
                             ),
                             onLongPress: () {
-                              TaskDao().delete(widget.nome);
+                              showDialog(
+                                context: context,
+                                builder: (BuildContext context) {
+                                  return AlertDialog(
+                                    title: Text("Deletar"),
+                                    content: Text(
+                                        "Tem certeza que deseja deletar esta tarefa?"),
+                                    actions: [
+                                      TextButton(
+                                          onPressed: () =>
+                                              Navigator.pop(context, 'Cancel'),
+                                          child: Text("Não")),
+                                      TextButton(
+                                          onPressed: () {
+                                            TaskDao().delete(widget.nome);
+                                            Navigator.pop(context, 'Sim');
+                                          },
+                                          child: Text("Sim"))
+                                    ],
+                                  );
+                                },
+                              );
                             },
                             onPressed: () {
                               setState(() {
