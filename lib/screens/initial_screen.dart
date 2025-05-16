@@ -112,6 +112,7 @@ class _InitialScreenState extends State<InitialScreen> {
             ),
           ).then(
             (value) => setState(() {
+              // ignore: avoid_print
               print("Recarregando a Tela Inicial");
             }),
           );

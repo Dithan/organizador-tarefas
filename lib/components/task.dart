@@ -7,15 +7,15 @@ class Task extends StatefulWidget {
   final String nome;
   final String image;
   final int dificuldade;
+  int nivel;
 
-  Task({
-    super.key,
-    required this.nome,
-    required this.image,
-    required this.dificuldade,
-  });
-
-  int nivel = 0;
+  Task(
+    this.nome,
+    this.image,
+    this.dificuldade, [
+    this.nivel = 0,
+    Key? key,
+  ]) : super(key: key);
 
   @override
   State<Task> createState() => _TaskState();
@@ -139,13 +139,22 @@ class _TaskState extends State<Task> {
                             onPressed: () {
                               setState(() {
                                 widget.nivel++;
+                                TaskDao().save(Task(
+                                  widget.nome,
+                                  widget.image,
+                                  widget.dificuldade,
+                                  widget.nivel,
+                                ));
                               });
                             },
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
-                                Icon(Icons.arrow_drop_up),
+                                Icon(
+                                  Icons.arrow_drop_up,
+                                  color: Colors.white,
+                                ),
                                 Text(
                                   "Lvl Up",
                                   style: TextStyle(

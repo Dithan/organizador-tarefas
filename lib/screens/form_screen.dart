@@ -206,10 +206,9 @@ class _FormScreenState extends State<FormScreen> {
                           if (_formKey.currentState!.validate()) {
                             TaskDao().save(
                               Task(
-                                nome: nameController.text,
-                                image: imageController.text,
-                                dificuldade:
-                                    int.parse(difficultyController.text),
+                                nameController.text,
+                                imageController.text,
+                                int.parse(difficultyController.text),
                               ),
                             );
 
